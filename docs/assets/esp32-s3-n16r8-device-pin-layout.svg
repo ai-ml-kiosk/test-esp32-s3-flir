@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1500" viewBox="0 0 1100 1500" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1100" viewBox="0 0 1100 1500" role="img" aria-labelledby="title desc">
   <title id="title">ESP32-S3 N16R8 device pin layout</title>
   <desc id="desc">Front-view device mapping for a dual USB-C ESP32-S3-WROOM N16R8 board. Display, touch, and microSD signals are placed mostly on the left header. FLIR Lepton VoSPI signals are placed on the right header.</desc>
   <defs>
