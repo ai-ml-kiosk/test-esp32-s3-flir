@@ -27,6 +27,10 @@ Status: design documents only. No firmware code has been generated yet.
   adding full UI features.
 - [Sources](docs/sources.md): external references used for the design notes.
 
+## Pin Layout Preview
+
+![ESP32-S3 N16R8 device pin layout](docs/assets/esp32-s3-n16r8-device-pin-layout.svg.png)
+
 ## Important Assumptions
 
 This design assumes a generic ESP32-S3 dev board with enough exposed GPIOs. Many
@@ -40,4 +44,3 @@ The pin map uses separate SPI buses:
 
 That separation is intentional because Lepton VoSPI timing is sensitive and the
 display/SD card can create long SPI transactions.
-

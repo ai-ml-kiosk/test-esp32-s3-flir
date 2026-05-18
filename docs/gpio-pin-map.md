@@ -5,13 +5,17 @@ Verify the exact board schematic before wiring. Some ESP32-S3 boards do not
 expose every GPIO, and some pins may be connected to onboard flash, PSRAM, RGB
 LEDs, buttons, USB, or UART.
 
-![ESP32-S3 N16R8 device pin layout](assets/esp32-s3-n16r8-device-pin-layout.svg)
+![ESP32-S3 N16R8 device pin layout](assets/esp32-s3-n16r8-device-pin-layout.svg.png)
 
 The diagram above maps the devices onto the dual-USB ESP32-S3-WROOM N16R8
 header layout shown in the reference photo. The important design choice remains:
 keep the UI devices on one shared SPI bus and keep the FLIR Lepton VoSPI capture
 on a dedicated SPI bus. That separation reduces the chance that display or SD
 card transactions disturb Lepton packet timing.
+
+The editable source is
+[`esp32-s3-n16r8-device-pin-layout.svg`](assets/esp32-s3-n16r8-device-pin-layout.svg);
+the PNG version is embedded so repository previews render consistently.
 
 ## Board Header Placement
 
