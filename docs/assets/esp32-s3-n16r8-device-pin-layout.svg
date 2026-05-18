@@ -67,73 +67,73 @@
   <text class="small" x="604" y="1300">UART</text>
 
   <!-- Left header pins -->
-  <rect class="power" x="235" y="270" width="92" height="38" rx="8"/><text class="pinText" x="266" y="296">G</text>
-  <rect class="power" x="235" y="318" width="92" height="38" rx="8"/><text class="pinText" x="258" y="344">5V</text>
-  <rect class="lcd" x="235" y="366" width="92" height="38" rx="8"/><text class="pinText" x="252" y="392">IO14</text>
-  <rect class="ui" x="235" y="414" width="92" height="38" rx="8"/><text class="pinText" x="252" y="440">IO13</text>
-  <rect class="ui" x="235" y="462" width="92" height="38" rx="8"/><text class="pinText" x="252" y="488">IO12</text>
-  <rect class="ui" x="235" y="510" width="92" height="38" rx="8"/><text class="pinText" x="252" y="536">IO11</text>
-  <rect class="lcd" x="235" y="558" width="92" height="38" rx="8"/><text class="pinText" x="252" y="584">IO10</text>
-  <rect class="lcd" x="235" y="606" width="92" height="38" rx="8"/><text class="pinText" x="260" y="632">IO9</text>
-  <rect class="avoid" x="235" y="654" width="92" height="38" rx="8"/><text class="pinText" x="252" y="680">IO46</text>
-  <rect class="avoid" x="235" y="702" width="92" height="38" rx="8"/><text class="pinText" x="260" y="728">IO3</text>
-  <rect class="i2c" x="235" y="750" width="92" height="38" rx="8"/><text class="pinText" x="260" y="776">IO8</text>
-  <rect class="i2c" x="235" y="798" width="92" height="38" rx="8"/><text class="pinText" x="252" y="824">IO18</text>
-  <rect class="sd" x="235" y="846" width="92" height="38" rx="8"/><text class="pinText" x="252" y="872">IO17</text>
-  <rect class="touch" x="235" y="894" width="92" height="38" rx="8"/><text class="pinText" x="252" y="920">IO16</text>
-  <rect class="touch" x="235" y="942" width="92" height="38" rx="8"/><text class="pinText" x="252" y="968">IO15</text>
-  <rect class="avoid" x="235" y="990" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1016">IO7</text>
-  <rect class="avoid" x="235" y="1038" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1064">IO6</text>
-  <rect class="avoid" x="235" y="1086" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1112">IO5</text>
-  <rect class="avoid" x="235" y="1134" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1160">IO4</text>
-  <rect class="avoid" x="235" y="1182" width="92" height="38" rx="8"/><text class="pinText" x="254" y="1208">RST</text>
-  <rect class="power" x="235" y="1230" width="92" height="38" rx="8"/><text class="pinText" x="250" y="1256">3V3</text>
-  <rect class="power" x="235" y="1278" width="92" height="38" rx="8"/><text class="pinText" x="250" y="1304">3V3</text>
+  <rect class="power" x="235" y="270" width="92" height="38" rx="8"/><text class="pinText" x="250" y="296">3V3</text>
+  <rect class="power" x="235" y="318" width="92" height="38" rx="8"/><text class="pinText" x="250" y="344">3V3</text>
+  <rect class="avoid" x="235" y="366" width="92" height="38" rx="8"/><text class="pinText" x="254" y="392">RST</text>
+  <rect class="avoid" x="235" y="414" width="92" height="38" rx="8"/><text class="pinText" x="260" y="440">IO4</text>
+  <rect class="avoid" x="235" y="462" width="92" height="38" rx="8"/><text class="pinText" x="260" y="488">IO5</text>
+  <rect class="avoid" x="235" y="510" width="92" height="38" rx="8"/><text class="pinText" x="260" y="536">IO6</text>
+  <rect class="avoid" x="235" y="558" width="92" height="38" rx="8"/><text class="pinText" x="260" y="584">IO7</text>
+  <rect class="touch" x="235" y="606" width="92" height="38" rx="8"/><text class="pinText" x="252" y="632">IO15</text>
+  <rect class="touch" x="235" y="654" width="92" height="38" rx="8"/><text class="pinText" x="252" y="680">IO16</text>
+  <rect class="sd" x="235" y="702" width="92" height="38" rx="8"/><text class="pinText" x="252" y="728">IO17</text>
+  <rect class="i2c" x="235" y="750" width="92" height="38" rx="8"/><text class="pinText" x="252" y="776">IO18</text>
+  <rect class="i2c" x="235" y="798" width="92" height="38" rx="8"/><text class="pinText" x="260" y="824">IO8</text>
+  <rect class="avoid" x="235" y="846" width="92" height="38" rx="8"/><text class="pinText" x="260" y="872">IO3</text>
+  <rect class="avoid" x="235" y="894" width="92" height="38" rx="8"/><text class="pinText" x="252" y="920">IO46</text>
+  <rect class="lcd" x="235" y="942" width="92" height="38" rx="8"/><text class="pinText" x="260" y="968">IO9</text>
+  <rect class="lcd" x="235" y="990" width="92" height="38" rx="8"/><text class="pinText" x="252" y="1016">IO10</text>
+  <rect class="ui" x="235" y="1038" width="92" height="38" rx="8"/><text class="pinText" x="252" y="1064">IO11</text>
+  <rect class="ui" x="235" y="1086" width="92" height="38" rx="8"/><text class="pinText" x="252" y="1112">IO12</text>
+  <rect class="ui" x="235" y="1134" width="92" height="38" rx="8"/><text class="pinText" x="252" y="1160">IO13</text>
+  <rect class="lcd" x="235" y="1182" width="92" height="38" rx="8"/><text class="pinText" x="252" y="1208">IO14</text>
+  <rect class="power" x="235" y="1230" width="92" height="38" rx="8"/><text class="pinText" x="252" y="1256">5V</text>
+  <rect class="power" x="235" y="1278" width="92" height="38" rx="8"/><text class="pinText" x="266" y="1304">G</text>
 
   <!-- Right header pins -->
   <rect class="power" x="773" y="270" width="92" height="38" rx="8"/><text class="pinText" x="805" y="296">G</text>
-  <rect class="power" x="773" y="318" width="92" height="38" rx="8"/><text class="pinText" x="805" y="344">G</text>
-  <rect class="avoid" x="773" y="366" width="92" height="38" rx="8"/><text class="pinText" x="790" y="392">IO19</text>
-  <rect class="avoid" x="773" y="414" width="92" height="38" rx="8"/><text class="pinText" x="790" y="440">IO20</text>
-  <rect class="lcd" x="773" y="462" width="92" height="38" rx="8"/><text class="pinText" x="790" y="488">IO21</text>
-  <rect class="avoid" x="773" y="510" width="92" height="38" rx="8"/><text class="pinText" x="790" y="536">IO47</text>
-  <rect class="avoid" x="773" y="558" width="92" height="38" rx="8"/><text class="pinText" x="790" y="584">IO48</text>
-  <rect class="avoid" x="773" y="606" width="92" height="38" rx="8"/><text class="pinText" x="790" y="632">IO45</text>
-  <rect class="avoid" x="773" y="654" width="92" height="38" rx="8"/><text class="pinText" x="798" y="680">IO0</text>
-  <rect class="flir" x="773" y="702" width="92" height="38" rx="8"/><text class="pinText" x="790" y="728">IO35</text>
-  <rect class="flir" x="773" y="750" width="92" height="38" rx="8"/><text class="pinText" x="790" y="776">IO36</text>
-  <rect class="flir" x="773" y="798" width="92" height="38" rx="8"/><text class="pinText" x="790" y="824">IO37</text>
-  <rect class="avoid" x="773" y="846" width="92" height="38" rx="8"/><text class="pinText" x="790" y="872">IO38</text>
-  <rect class="flir" x="773" y="894" width="92" height="38" rx="8"/><text class="pinText" x="790" y="920">IO39</text>
-  <rect class="avoid" x="773" y="942" width="92" height="38" rx="8"/><text class="pinText" x="790" y="968">IO40</text>
-  <rect class="avoid" x="773" y="990" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1016">IO41</text>
-  <rect class="avoid" x="773" y="1038" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1064">IO42</text>
-  <rect class="flir" x="773" y="1086" width="92" height="38" rx="8"/><text class="pinText" x="798" y="1112">IO2</text>
-  <rect class="flir" x="773" y="1134" width="92" height="38" rx="8"/><text class="pinText" x="798" y="1160">IO1</text>
-  <rect class="avoid" x="773" y="1182" width="92" height="38" rx="8"/><text class="pinText" x="793" y="1208">RX</text>
-  <rect class="avoid" x="773" y="1230" width="92" height="38" rx="8"/><text class="pinText" x="793" y="1256">TX</text>
+  <rect class="avoid" x="773" y="318" width="92" height="38" rx="8"/><text class="pinText" x="790" y="344">IO43</text>
+  <rect class="avoid" x="773" y="366" width="92" height="38" rx="8"/><text class="pinText" x="790" y="392">IO44</text>
+  <rect class="flir" x="773" y="414" width="92" height="38" rx="8"/><text class="pinText" x="798" y="440">IO1</text>
+  <rect class="flir" x="773" y="462" width="92" height="38" rx="8"/><text class="pinText" x="798" y="488">IO2</text>
+  <rect class="avoid" x="773" y="510" width="92" height="38" rx="8"/><text class="pinText" x="790" y="536">IO42</text>
+  <rect class="avoid" x="773" y="558" width="92" height="38" rx="8"/><text class="pinText" x="790" y="584">IO41</text>
+  <rect class="avoid" x="773" y="606" width="92" height="38" rx="8"/><text class="pinText" x="790" y="632">IO40</text>
+  <rect class="flir" x="773" y="654" width="92" height="38" rx="8"/><text class="pinText" x="790" y="680">IO39</text>
+  <rect class="avoid" x="773" y="702" width="92" height="38" rx="8"/><text class="pinText" x="790" y="728">IO38</text>
+  <rect class="flir" x="773" y="750" width="92" height="38" rx="8"/><text class="pinText" x="790" y="776">IO37</text>
+  <rect class="flir" x="773" y="798" width="92" height="38" rx="8"/><text class="pinText" x="790" y="824">IO36</text>
+  <rect class="flir" x="773" y="846" width="92" height="38" rx="8"/><text class="pinText" x="790" y="872">IO35</text>
+  <rect class="avoid" x="773" y="894" width="92" height="38" rx="8"/><text class="pinText" x="798" y="920">IO0</text>
+  <rect class="avoid" x="773" y="942" width="92" height="38" rx="8"/><text class="pinText" x="790" y="968">IO45</text>
+  <rect class="avoid" x="773" y="990" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1016">IO48</text>
+  <rect class="avoid" x="773" y="1038" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1064">IO47</text>
+  <rect class="lcd" x="773" y="1086" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1112">IO21</text>
+  <rect class="avoid" x="773" y="1134" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1160">IO20</text>
+  <rect class="avoid" x="773" y="1182" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1208">IO19</text>
+  <rect class="power" x="773" y="1230" width="92" height="38" rx="8"/><text class="pinText" x="805" y="1256">G</text>
   <rect class="power" x="773" y="1278" width="92" height="38" rx="8"/><text class="pinText" x="805" y="1304">G</text>
 
   <!-- Signal tags -->
-  <text class="label" x="88" y="396">LCD RST</text>
-  <text class="label" x="88" y="444">UI MISO</text>
-  <text class="label" x="88" y="492">UI SCLK</text>
-  <text class="label" x="88" y="540">UI MOSI</text>
-  <text class="label" x="88" y="588">LCD CS</text>
-  <text class="label" x="88" y="636">LCD DC</text>
-  <text class="label" x="88" y="780">CCI SDA</text>
-  <text class="label" x="88" y="828">CCI SCL</text>
-  <text class="label" x="88" y="876">SD CS</text>
-  <text class="label" x="88" y="924">Touch IRQ</text>
-  <text class="label" x="88" y="972">Touch CS</text>
+  <text class="label" x="88" y="636">Touch CS</text>
+  <text class="label" x="88" y="684">Touch IRQ</text>
+  <text class="label" x="88" y="732">SD CS</text>
+  <text class="label" x="88" y="780">CCI SCL</text>
+  <text class="label" x="88" y="828">CCI SDA</text>
+  <text class="label" x="88" y="972">LCD DC</text>
+  <text class="label" x="88" y="1020">LCD CS</text>
+  <text class="label" x="88" y="1068">UI MOSI</text>
+  <text class="label" x="88" y="1116">UI SCLK</text>
+  <text class="label" x="88" y="1164">UI MISO</text>
+  <text class="label" x="88" y="1212">LCD RST</text>
 
-  <text class="label" x="892" y="492">Backlight PWM</text>
-  <text class="label" x="892" y="732">FLIR MOSI optional</text>
-  <text class="label" x="892" y="780">FLIR SCK</text>
-  <text class="label" x="892" y="828">FLIR MISO</text>
-  <text class="label" x="892" y="924">FLIR CS</text>
-  <text class="label" x="892" y="1116">FLIR RST optional</text>
-  <text class="label" x="892" y="1164">FLIR PWR_EN optional</text>
+  <text class="label" x="892" y="444">FLIR PWR_EN optional</text>
+  <text class="label" x="892" y="492">FLIR RST optional</text>
+  <text class="label" x="892" y="684">FLIR CS</text>
+  <text class="label" x="892" y="780">FLIR MISO</text>
+  <text class="label" x="892" y="828">FLIR SCK</text>
+  <text class="label" x="892" y="876">FLIR MOSI optional</text>
+  <text class="label" x="892" y="1116">Backlight PWM</text>
 
   <rect class="callout" x="54" y="1384" width="992" height="78"/>
   <text class="note" x="84" y="1418">Power: FLIR breakout signal pins must be 3.3V logic. TFT VCC may be 3.3V or 5V only if the module explicitly supports it.</text>
