@@ -3,7 +3,8 @@
 Design-doc staging project for porting the GoVision FLIR Lepton viewer logic to
 an ESP32-S3 board with a 2.8 inch 240x320 SPI touch display and microSD slot.
 
-Status: design documents only. No firmware code has been generated yet.
+Status: PlatformIO firmware scaffold is available for LCD/touch bring-up. FLIR
+Lepton capture firmware is still planned.
 
 ## Scope
 
@@ -30,6 +31,21 @@ Status: design documents only. No firmware code has been generated yet.
 ## Pin Layout Preview
 
 ![ESP32-S3 N16R8 device pin layout](docs/assets/esp32-s3-n16r8-device-pin-layout.svg.png)
+
+## PlatformIO Quick Start
+
+This project targets an ESP32-S3-WROOM N16R8 style board through the
+`esp32-s3-n16r8` PlatformIO environment.
+
+```bash
+pio run
+pio run --target upload
+pio device monitor --baud 115200
+```
+
+The current firmware initializes an ILI9341 LCD and XPT2046 touch controller
+using the documented shared UI SPI wiring. On boot it draws a pin summary screen
+and prints touch coordinates over serial.
 
 ## Important Assumptions
 
