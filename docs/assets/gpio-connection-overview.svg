@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">ESP32-S3 FLIR Lepton GPIO connection overview</title>
+  <desc id="desc">Wiring overview showing an ESP32-S3 connected to a shared UI SPI display, touch, and microSD module, a dedicated FLIR Lepton VoSPI bus, and FLIR CCI I2C control lines.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .page { fill: #f8fafc; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 2; rx: 14; }
+      .module { fill: #fefefe; stroke: #475569; stroke-width: 2; rx: 12; }
+      .title { font: 700 30px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 16px Arial, sans-serif; fill: #475569; }
+      .heading { font: 700 20px Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 15px Arial, sans-serif; fill: #0f172a; }
+      .pin { font: 700 14px Arial, sans-serif; fill: #ffffff; }
+      .note { font: 400 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 400 12px Arial, sans-serif; fill: #475569; }
+      .wire { fill: none; stroke-width: 3; marker-end: url(#arrow); }
+      .wire-bi { fill: none; stroke-width: 3; marker-start: url(#arrow); marker-end: url(#arrow); }
+      .ui { stroke: #2563eb; }
+      .ui-fill { fill: #2563eb; }
+      .flir { stroke: #dc2626; }
+      .flir-fill { fill: #dc2626; }
+      .i2c { stroke: #7c3aed; }
+      .i2c-fill { fill: #7c3aed; }
+      .ctrl { stroke: #ea580c; }
+      .ctrl-fill { fill: #ea580c; }
+      .power { stroke: #16a34a; }
+      .power-fill { fill: #16a34a; }
+      .ground { stroke: #64748b; }
+      .ground-fill { fill: #64748b; }
+      .bus-band { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 1; rx: 10; }
+      .callout { fill: #fff7ed; stroke: #fed7aa; stroke-width: 1.5; rx: 10; }
+    </style>
+  </defs>
+
+  <rect class="page" x="0" y="0" width="1200" height="820"/>
+  <text class="title" x="48" y="58">ESP32-S3 FLIR GPIO Connection Overview</text>
+  <text class="subtitle" x="48" y="86">Proposed starting map. Verify the exact ESP32-S3 board schematic before wiring.</text>
+
+  <rect class="box" x="430" y="135" width="340" height="560"/>
+  <text class="heading" x="518" y="175">ESP32-S3 Dev Board</text>
+  <text class="small" x="485" y="200">3.3V GPIO logic only</text>
+
+  <rect class="bus-band" x="452" y="230" width="296" height="180"/>
+  <text class="label" x="475" y="260">UI SPI bus</text>
+  <text class="small" x="475" y="282">Shared by LCD, touch, and microSD</text>
+
+  <rect class="ui-fill" x="475" y="305" width="86" height="28" rx="6"/>
+  <text class="pin" x="489" y="324">GPIO12</text>
+  <text class="note" x="570" y="324">SCLK</text>
+  <rect class="ui-fill" x="475" y="342" width="86" height="28" rx="6"/>
+  <text class="pin" x="489" y="361">GPIO11</text>
+  <text class="note" x="570" y="361">MOSI</text>
+  <rect class="ui-fill" x="475" y="379" width="86" height="28" rx="6"/>
+  <text class="pin" x="489" y="398">GPIO13</text>
+  <text class="note" x="570" y="398">MISO</text>
+
+  <rect class="bus-band" x="452" y="430" width="296" height="184"/>
+  <text class="label" x="475" y="460">Dedicated FLIR buses</text>
+  <text class="small" x="475" y="482">Keep VoSPI isolated from display/SD</text>
+
+  <rect class="flir-fill" x="475" y="505" width="86" height="28" rx="6"/>
+  <text class="pin" x="489" y="524">GPIO36</text>
+  <text class="note" x="570" y="524">VoSPI SCK</text>
+  <rect class="flir-fill" x="475" y="542" width="86" height="28" rx="6"/>
+  <text class="pin" x="489" y="561">GPIO37</text>
+  <text class="note" x="570" y="561">VoSPI MISO</text>
+  <rect class="flir-fill" x="475" y="579" width="86" height="28" rx="6"/>
+  <text class="pin" x="489" y="598">GPIO34</text>
+  <text class="note" x="570" y="598">VoSPI CS</text>
+
+  <rect class="i2c-fill" x="628" y="505" width="86" height="28" rx="6"/>
+  <text class="pin" x="646" y="524">GPIO8</text>
+  <text class="note" x="628" y="553">CCI SDA</text>
+  <rect class="i2c-fill" x="628" y="579" width="86" height="28" rx="6"/>
+  <text class="pin" x="642" y="598">GPIO18</text>
+  <text class="note" x="628" y="627">CCI SCL</text>
+
+  <rect class="module" x="56" y="170" width="300" height="238"/>
+  <text class="heading" x="93" y="208">2.8 inch SPI TFT Module</text>
+  <text class="small" x="95" y="232">ILI9341 LCD + XPT2046 touch + microSD</text>
+  <text class="label" x="92" y="274">Shared bus</text>
+  <text class="note" x="92" y="300">LCD SCK / T_CLK / SD_SCK</text>
+  <text class="note" x="92" y="326">LCD SDI / T_DIN / SD_MOSI</text>
+  <text class="note" x="92" y="352">LCD SDO / T_DO / SD_MISO</text>
+
+  <text class="label" x="92" y="390">Chip selects and controls</text>
+  <text class="note" x="92" y="416">LCD CS GPIO10, DC GPIO9, RST GPIO14</text>
+  <text class="note" x="92" y="442">BL GPIO21, T_CS GPIO15, T_IRQ GPIO16</text>
+  <text class="note" x="92" y="468">SD CS GPIO17</text>
+
+  <rect class="module" x="844" y="196" width="300" height="286"/>
+  <text class="heading" x="903" y="234">FLIR Lepton Breakout</text>
+  <text class="small" x="908" y="258">Thermal VoSPI + CCI control</text>
+  <text class="label" x="880" y="304">VoSPI frame capture</text>
+  <text class="note" x="880" y="330">SPI SCK GPIO36</text>
+  <text class="note" x="880" y="356">SPI MISO GPIO37</text>
+  <text class="note" x="880" y="382">SPI MOSI GPIO35 optional</text>
+  <text class="note" x="880" y="408">SPI CS GPIO34</text>
+  <text class="label" x="880" y="448">CCI / I2C control</text>
+  <text class="note" x="880" y="474">SDA GPIO8, SCL GPIO18</text>
+  <text class="note" x="880" y="500">RST GPIO38 and PWR_EN GPIO39 optional</text>
+
+  <rect class="callout" x="844" y="536" width="300" height="112"/>
+  <text class="label" x="872" y="570">Power rule</text>
+  <text class="note" x="872" y="598">Use 3.3V logic on every signal.</text>
+  <text class="note" x="872" y="624">Share one ground across ESP32-S3,</text>
+  <text class="note" x="872" y="650">display/touch/SD, and FLIR.</text>
+
+  <path class="wire ui" d="M 452 319 C 392 319 392 300 356 300"/>
+  <path class="wire ui" d="M 452 356 C 390 356 390 326 356 326"/>
+  <path class="wire-bi ui" d="M 452 393 C 390 393 390 352 356 352"/>
+
+  <path class="wire flir" d="M 748 519 C 806 519 806 330 844 330"/>
+  <path class="wire-bi flir" d="M 748 556 C 805 556 805 356 844 356"/>
+  <path class="wire flir" d="M 748 593 C 812 593 812 408 844 408"/>
+  <path class="wire flir" d="M 748 539 C 792 539 792 382 844 382"/>
+
+  <path class="wire-bi i2c" d="M 714 519 C 782 519 782 474 844 474"/>
+  <path class="wire i2c" d="M 714 593 C 785 593 785 497 844 497"/>
+
+  <path class="wire ctrl" d="M 452 360 C 366 360 366 416 356 416"/>
+  <path class="wire ctrl" d="M 452 378 C 378 378 378 442 356 442"/>
+  <path class="wire ctrl" d="M 452 396 C 386 396 386 468 356 468"/>
+
+  <path class="wire power" d="M 603 695 C 603 744 972 744 972 648"/>
+  <text class="note" x="478" y="732">Power: 3.3V to FLIR, display VCC only per module rating</text>
+  <path class="wire-bi ground" d="M 700 695 C 700 770 1010 770 1010 648"/>
+  <text class="note" x="478" y="762">Ground: common GND for all modules</text>
+
+  <rect class="ui-fill" x="56" y="708" width="22" height="14" rx="3"/>
+  <text class="small" x="88" y="720">UI SPI shared bus</text>
+  <rect class="flir-fill" x="226" y="708" width="22" height="14" rx="3"/>
+  <text class="small" x="258" y="720">FLIR VoSPI</text>
+  <rect class="i2c-fill" x="380" y="708" width="22" height="14" rx="3"/>
+  <text class="small" x="412" y="720">CCI / I2C</text>
+  <rect class="ctrl-fill" x="534" y="708" width="22" height="14" rx="3"/>
+  <text class="small" x="566" y="720">Chip select / control</text>
+  <rect class="power-fill" x="738" y="708" width="22" height="14" rx="3"/>
+  <text class="small" x="770" y="720">Power</text>
+  <rect class="ground-fill" x="852" y="708" width="22" height="14" rx="3"/>
+  <text class="small" x="884" y="720">Ground</text>
+</svg>

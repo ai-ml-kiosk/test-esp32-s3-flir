@@ -5,6 +5,13 @@ Verify the exact board schematic before wiring. Some ESP32-S3 boards do not
 expose every GPIO, and some pins may be connected to onboard flash, PSRAM, RGB
 LEDs, buttons, USB, or UART.
 
+![ESP32-S3 FLIR GPIO connection overview](assets/gpio-connection-overview.svg)
+
+The diagram above highlights the most important design choice: keep the UI
+devices on one shared SPI bus and keep the FLIR Lepton VoSPI capture on a
+dedicated SPI bus. That separation reduces the chance that display or SD card
+transactions disturb Lepton packet timing.
+
 ## Avoided Pins
 
 Avoid these pins unless the board schematic says they are safe:
@@ -78,4 +85,3 @@ sensitive than the LCD UI bus. Prioritize short wiring and stable pins for:
 2. FLIR `MISO`
 3. FLIR `CS`
 4. FLIR I2C `SDA/SCL`
-
