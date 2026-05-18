@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1500" viewBox="0 0 1100 1500" role="img" aria-labelledby="title desc">
+  <title id="title">ESP32-S3 N16R8 device pin layout</title>
+  <desc id="desc">Front-view device mapping for a dual USB-C ESP32-S3-WROOM N16R8 board. Display, touch, and microSD signals are placed mostly on the left header. FLIR Lepton VoSPI signals are placed on the right header.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .board { fill: #162235; stroke: #0f172a; stroke-width: 4; rx: 26; }
+      .module { fill: #dbe4ee; stroke: #94a3b8; stroke-width: 3; rx: 12; }
+      .usb { fill: #d1d5db; stroke: #64748b; stroke-width: 3; rx: 12; }
+      .btn { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; rx: 12; }
+      .pin { fill: #0f172a; stroke: #64748b; stroke-width: 2; rx: 8; }
+      .pinText { font: 700 21px Arial, sans-serif; fill: #ffffff; }
+      .title { font: 700 34px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #475569; }
+      .label { font: 700 17px Arial, sans-serif; fill: #0f172a; }
+      .small { font: 400 14px Arial, sans-serif; fill: #475569; }
+      .tagText { font: 700 15px Arial, sans-serif; fill: #ffffff; }
+      .tagTextDark { font: 700 15px Arial, sans-serif; fill: #0f172a; }
+      .note { font: 400 16px Arial, sans-serif; fill: #334155; }
+      .ui { fill: #2563eb; }
+      .lcd { fill: #0f766e; }
+      .touch { fill: #7c3aed; }
+      .sd { fill: #ea580c; }
+      .flir { fill: #dc2626; }
+      .i2c { fill: #9333ea; }
+      .power { fill: #16a34a; }
+      .avoid { fill: #e2e8f0; stroke: #94a3b8; stroke-width: 2; }
+      .legendBox { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 14; }
+      .callout { fill: #fff7ed; stroke: #fed7aa; stroke-width: 2; rx: 14; }
+      .wire { fill: none; stroke: #64748b; stroke-width: 3; stroke-dasharray: 8 8; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1100" height="1500"/>
+  <text class="title" x="54" y="62">ESP32-S3 N16R8 Device Pin Layout</text>
+  <text class="subtitle" x="54" y="94">Front view, USB-C connectors at bottom. Pin names follow the board silkscreen in the reference photo.</text>
+
+  <rect class="legendBox" x="54" y="120" width="992" height="86"/>
+  <rect class="ui" x="84" y="146" width="24" height="18" rx="4"/>
+  <text class="small" x="118" y="161">UI SPI shared by LCD, touch, SD</text>
+  <rect class="lcd" x="360" y="146" width="24" height="18" rx="4"/>
+  <text class="small" x="394" y="161">LCD control</text>
+  <rect class="touch" x="510" y="146" width="24" height="18" rx="4"/>
+  <text class="small" x="544" y="161">Touch</text>
+  <rect class="sd" x="628" y="146" width="24" height="18" rx="4"/>
+  <text class="small" x="662" y="161">microSD</text>
+  <rect class="flir" x="760" y="146" width="24" height="18" rx="4"/>
+  <text class="small" x="794" y="161">FLIR VoSPI</text>
+  <rect class="i2c" x="900" y="146" width="24" height="18" rx="4"/>
+  <text class="small" x="934" y="161">FLIR CCI/I2C</text>
+  <rect class="power" x="84" y="176" width="24" height="18" rx="4"/>
+  <text class="small" x="118" y="191">Power or common ground</text>
+  <rect class="avoid" x="360" y="176" width="24" height="18" rx="4"/>
+  <text class="small" x="394" y="191">Leave free or verify board-specific use</text>
+
+  <rect class="board" x="355" y="250" width="390" height="1110"/>
+  <rect class="module" x="435" y="310" width="230" height="180"/>
+  <text class="label" x="468" y="370">ESP32-S3-WROOM</text>
+  <text class="small" x="500" y="398">N16R8 module</text>
+  <rect class="btn" x="470" y="555" width="70" height="48"/>
+  <text class="small" x="486" y="585">BOOT</text>
+  <rect class="btn" x="560" y="555" width="70" height="48"/>
+  <text class="small" x="575" y="585">RST</text>
+  <rect class="usb" x="405" y="1260" width="120" height="70"/>
+  <text class="small" x="435" y="1300">USB</text>
+  <rect class="usb" x="575" y="1260" width="120" height="70"/>
+  <text class="small" x="604" y="1300">UART</text>
+
+  <!-- Left header pins -->
+  <rect class="power" x="235" y="270" width="92" height="38" rx="8"/><text class="pinText" x="266" y="296">G</text>
+  <rect class="power" x="235" y="318" width="92" height="38" rx="8"/><text class="pinText" x="258" y="344">5V</text>
+  <rect class="lcd" x="235" y="366" width="92" height="38" rx="8"/><text class="pinText" x="252" y="392">IO14</text>
+  <rect class="ui" x="235" y="414" width="92" height="38" rx="8"/><text class="pinText" x="252" y="440">IO13</text>
+  <rect class="ui" x="235" y="462" width="92" height="38" rx="8"/><text class="pinText" x="252" y="488">IO12</text>
+  <rect class="ui" x="235" y="510" width="92" height="38" rx="8"/><text class="pinText" x="252" y="536">IO11</text>
+  <rect class="lcd" x="235" y="558" width="92" height="38" rx="8"/><text class="pinText" x="252" y="584">IO10</text>
+  <rect class="lcd" x="235" y="606" width="92" height="38" rx="8"/><text class="pinText" x="260" y="632">IO9</text>
+  <rect class="avoid" x="235" y="654" width="92" height="38" rx="8"/><text class="pinText" x="252" y="680">IO46</text>
+  <rect class="avoid" x="235" y="702" width="92" height="38" rx="8"/><text class="pinText" x="260" y="728">IO3</text>
+  <rect class="i2c" x="235" y="750" width="92" height="38" rx="8"/><text class="pinText" x="260" y="776">IO8</text>
+  <rect class="i2c" x="235" y="798" width="92" height="38" rx="8"/><text class="pinText" x="252" y="824">IO18</text>
+  <rect class="sd" x="235" y="846" width="92" height="38" rx="8"/><text class="pinText" x="252" y="872">IO17</text>
+  <rect class="touch" x="235" y="894" width="92" height="38" rx="8"/><text class="pinText" x="252" y="920">IO16</text>
+  <rect class="touch" x="235" y="942" width="92" height="38" rx="8"/><text class="pinText" x="252" y="968">IO15</text>
+  <rect class="avoid" x="235" y="990" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1016">IO7</text>
+  <rect class="avoid" x="235" y="1038" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1064">IO6</text>
+  <rect class="avoid" x="235" y="1086" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1112">IO5</text>
+  <rect class="avoid" x="235" y="1134" width="92" height="38" rx="8"/><text class="pinText" x="260" y="1160">IO4</text>
+  <rect class="avoid" x="235" y="1182" width="92" height="38" rx="8"/><text class="pinText" x="254" y="1208">RST</text>
+  <rect class="power" x="235" y="1230" width="92" height="38" rx="8"/><text class="pinText" x="250" y="1256">3V3</text>
+  <rect class="power" x="235" y="1278" width="92" height="38" rx="8"/><text class="pinText" x="250" y="1304">3V3</text>
+
+  <!-- Right header pins -->
+  <rect class="power" x="773" y="270" width="92" height="38" rx="8"/><text class="pinText" x="805" y="296">G</text>
+  <rect class="power" x="773" y="318" width="92" height="38" rx="8"/><text class="pinText" x="805" y="344">G</text>
+  <rect class="avoid" x="773" y="366" width="92" height="38" rx="8"/><text class="pinText" x="790" y="392">IO19</text>
+  <rect class="avoid" x="773" y="414" width="92" height="38" rx="8"/><text class="pinText" x="790" y="440">IO20</text>
+  <rect class="lcd" x="773" y="462" width="92" height="38" rx="8"/><text class="pinText" x="790" y="488">IO21</text>
+  <rect class="avoid" x="773" y="510" width="92" height="38" rx="8"/><text class="pinText" x="790" y="536">IO47</text>
+  <rect class="avoid" x="773" y="558" width="92" height="38" rx="8"/><text class="pinText" x="790" y="584">IO48</text>
+  <rect class="avoid" x="773" y="606" width="92" height="38" rx="8"/><text class="pinText" x="790" y="632">IO45</text>
+  <rect class="avoid" x="773" y="654" width="92" height="38" rx="8"/><text class="pinText" x="798" y="680">IO0</text>
+  <rect class="flir" x="773" y="702" width="92" height="38" rx="8"/><text class="pinText" x="790" y="728">IO35</text>
+  <rect class="flir" x="773" y="750" width="92" height="38" rx="8"/><text class="pinText" x="790" y="776">IO36</text>
+  <rect class="flir" x="773" y="798" width="92" height="38" rx="8"/><text class="pinText" x="790" y="824">IO37</text>
+  <rect class="avoid" x="773" y="846" width="92" height="38" rx="8"/><text class="pinText" x="790" y="872">IO38</text>
+  <rect class="flir" x="773" y="894" width="92" height="38" rx="8"/><text class="pinText" x="790" y="920">IO39</text>
+  <rect class="avoid" x="773" y="942" width="92" height="38" rx="8"/><text class="pinText" x="790" y="968">IO40</text>
+  <rect class="avoid" x="773" y="990" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1016">IO41</text>
+  <rect class="avoid" x="773" y="1038" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1064">IO42</text>
+  <rect class="flir" x="773" y="1086" width="92" height="38" rx="8"/><text class="pinText" x="798" y="1112">IO2</text>
+  <rect class="flir" x="773" y="1134" width="92" height="38" rx="8"/><text class="pinText" x="798" y="1160">IO1</text>
+  <rect class="avoid" x="773" y="1182" width="92" height="38" rx="8"/><text class="pinText" x="793" y="1208">RX</text>
+  <rect class="avoid" x="773" y="1230" width="92" height="38" rx="8"/><text class="pinText" x="793" y="1256">TX</text>
+  <rect class="power" x="773" y="1278" width="92" height="38" rx="8"/><text class="pinText" x="805" y="1304">G</text>
+
+  <!-- Signal tags -->
+  <text class="label" x="88" y="396">LCD RST</text>
+  <text class="label" x="88" y="444">UI MISO</text>
+  <text class="label" x="88" y="492">UI SCLK</text>
+  <text class="label" x="88" y="540">UI MOSI</text>
+  <text class="label" x="88" y="588">LCD CS</text>
+  <text class="label" x="88" y="636">LCD DC</text>
+  <text class="label" x="88" y="780">CCI SDA</text>
+  <text class="label" x="88" y="828">CCI SCL</text>
+  <text class="label" x="88" y="876">SD CS</text>
+  <text class="label" x="88" y="924">Touch IRQ</text>
+  <text class="label" x="88" y="972">Touch CS</text>
+
+  <text class="label" x="892" y="492">Backlight PWM</text>
+  <text class="label" x="892" y="732">FLIR MOSI optional</text>
+  <text class="label" x="892" y="780">FLIR SCK</text>
+  <text class="label" x="892" y="828">FLIR MISO</text>
+  <text class="label" x="892" y="924">FLIR CS</text>
+  <text class="label" x="892" y="1116">FLIR RST optional</text>
+  <text class="label" x="892" y="1164">FLIR PWR_EN optional</text>
+
+  <rect class="callout" x="54" y="1384" width="992" height="78"/>
+  <text class="note" x="84" y="1418">Power: FLIR breakout signal pins must be 3.3V logic. TFT VCC may be 3.3V or 5V only if the module explicitly supports it.</text>
+  <text class="note" x="84" y="1448">Ground: connect one common GND between ESP32-S3, TFT/touch/SD module, and FLIR breakout.</text>
+</svg>

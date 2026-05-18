@@ -68,8 +68,8 @@
   <text class="pin" x="489" y="561">GPIO37</text>
   <text class="note" x="570" y="561">VoSPI MISO</text>
   <rect class="flir-fill" x="475" y="579" width="86" height="28" rx="6"/>
-  <text class="pin" x="489" y="598">GPIO34</text>
-  <text class="note" x="570" y="598">VoSPI CS</text>
+  <text class="pin" x="489" y="598">GPIO39</text>
+  <text class="note" x="570" y="598">VoSPI CS on GPIO39</text>
 
   <rect class="i2c-fill" x="628" y="505" width="86" height="28" rx="6"/>
   <text class="pin" x="646" y="524">GPIO8</text>
@@ -98,10 +98,10 @@
   <text class="note" x="880" y="330">SPI SCK GPIO36</text>
   <text class="note" x="880" y="356">SPI MISO GPIO37</text>
   <text class="note" x="880" y="382">SPI MOSI GPIO35 optional</text>
-  <text class="note" x="880" y="408">SPI CS GPIO34</text>
+  <text class="note" x="880" y="408">SPI CS GPIO39</text>
   <text class="label" x="880" y="448">CCI / I2C control</text>
   <text class="note" x="880" y="474">SDA GPIO8, SCL GPIO18</text>
-  <text class="note" x="880" y="500">RST GPIO38 and PWR_EN GPIO39 optional</text>
+  <text class="note" x="880" y="500">RST GPIO2 and PWR_EN GPIO1 optional</text>
 
   <rect class="callout" x="844" y="536" width="300" height="112"/>
   <text class="label" x="872" y="570">Power rule</text>

@@ -5,12 +5,28 @@ Verify the exact board schematic before wiring. Some ESP32-S3 boards do not
 expose every GPIO, and some pins may be connected to onboard flash, PSRAM, RGB
 LEDs, buttons, USB, or UART.
 
-![ESP32-S3 FLIR GPIO connection overview](assets/gpio-connection-overview.svg)
+![ESP32-S3 N16R8 device pin layout](assets/esp32-s3-n16r8-device-pin-layout.svg)
 
-The diagram above highlights the most important design choice: keep the UI
-devices on one shared SPI bus and keep the FLIR Lepton VoSPI capture on a
-dedicated SPI bus. That separation reduces the chance that display or SD card
-transactions disturb Lepton packet timing.
+The diagram above maps the devices onto the dual-USB ESP32-S3-WROOM N16R8
+header layout shown in the reference photo. The important design choice remains:
+keep the UI devices on one shared SPI bus and keep the FLIR Lepton VoSPI capture
+on a dedicated SPI bus. That separation reduces the chance that display or SD
+card transactions disturb Lepton packet timing.
+
+## Board Header Placement
+
+Viewed from the front with the USB-C connectors at the bottom, this mapping
+keeps the display/touch/SD wiring mostly on the left header and the FLIR VoSPI
+wiring on the right header.
+
+| Header area | Device signals |
+|---|---|
+| Left header `GPIO11`, `GPIO12`, `GPIO13` | Shared UI SPI MOSI, SCLK, MISO. |
+| Left header `GPIO9`, `GPIO10`, `GPIO14`, `GPIO15`, `GPIO16`, `GPIO17` | LCD, touch, and SD chip-select/control pins. |
+| Left header `GPIO8`, `GPIO18` | FLIR CCI/I2C SDA and SCL. |
+| Right header `GPIO35`, `GPIO36`, `GPIO37`, `GPIO39` | Dedicated FLIR VoSPI MOSI, SCLK, MISO, CS. |
+| Right header `GPIO1`, `GPIO2` | Optional FLIR power-enable and reset lines. |
+| Power rails | Use `3V3` for FLIR, module-rated `3V3` or `5V` for TFT VCC, and common `G` ground. |
 
 ## Avoided Pins
 
@@ -20,7 +36,8 @@ Avoid these pins unless the board schematic says they are safe:
 - `GPIO3`, `GPIO45`, `GPIO46`: strapping-related pins on ESP32-S3.
 - `GPIO19`, `GPIO20`: commonly used for native USB D-/D+.
 - `GPIO43`, `GPIO44`: commonly used for UART logging/programming.
-- `GPIO48`: commonly used for onboard RGB LED on some ESP32-S3 boards.
+- `GPIO38`, `GPIO40`, `GPIO41`, `GPIO42`, `GPIO48`: commonly used for onboard
+  LEDs, JTAG, or board-specific functions on ESP32-S3 N16R8 dev boards.
 - Any board-specific flash/PSRAM pins.
 
 ## Proposed Bus Summary
@@ -33,7 +50,7 @@ Avoid these pins unless the board schematic says they are safe:
 | FLIR SPI SCLK | `GPIO36` | Dedicated Lepton VoSPI clock. |
 | FLIR SPI MISO | `GPIO37` | Lepton VoSPI data into ESP32-S3. |
 | FLIR SPI MOSI | `GPIO35` | Optional/unused by VoSPI, but wire if breakout expects SPI MOSI. |
-| FLIR SPI CS | `GPIO34` | Dedicated Lepton chip-select. |
+| FLIR SPI CS | `GPIO39` | Dedicated Lepton chip-select; replaces generic `GPIO34`, which is not exposed on this board layout. |
 | FLIR I2C SDA | `GPIO8` | CCI/control bus. |
 | FLIR I2C SCL | `GPIO18` | CCI/control bus. |
 
@@ -68,15 +85,16 @@ Assumed FLIR breakout exposes SPI/VoSPI and I2C/CCI at 3.3V logic.
 | SPI SCK | `GPIO36` | ESP32-S3 to FLIR | Dedicated VoSPI clock. |
 | SPI MISO / VoSPI data | `GPIO37` | FLIR to ESP32-S3 | Thermal packet stream. |
 | SPI MOSI | `GPIO35` | ESP32-S3 to FLIR | Optional for many VoSPI breakouts; safe to allocate. |
-| SPI CS | `GPIO34` | ESP32-S3 to FLIR | Dedicated chip-select. |
+| SPI CS | `GPIO39` | ESP32-S3 to FLIR | Dedicated chip-select. |
 | CCI SDA | `GPIO8` | Bidirectional | I2C data, use pullups if breakout lacks them. |
 | CCI SCL | `GPIO18` | ESP32-S3 to FLIR | I2C clock, use pullups if breakout lacks them. |
-| RESET / RST / EN | `GPIO38` | ESP32-S3 to FLIR | Optional reset/enable line if available. |
-| PWR_EN | `GPIO39` | ESP32-S3 to FLIR | Optional power-enable line if available. |
+| RESET / RST / EN | `GPIO2` | ESP32-S3 to FLIR | Optional reset/enable line if available. |
+| PWR_EN | `GPIO1` | ESP32-S3 to FLIR | Optional power-enable line if available. |
 
 ## Alternate Pin Strategy
 
-If `GPIO34` through `GPIO39` are unavailable on the chosen board, keep the same
+If `GPIO35` through `GPIO39` are unavailable or the chosen N16R8 board ties
+them to internal flash/PSRAM or other board-specific functions, keep the same
 bus separation but move the FLIR bus to another free set of GPIOs. ESP32-S3 can
 route SPI signals through the GPIO matrix, but high-speed Lepton capture is more
 sensitive than the LCD UI bus. Prioritize short wiring and stable pins for:
