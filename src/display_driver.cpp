@@ -1,6 +1,6 @@
-#include "Display.h"
+#include "display_driver.h"
 
-#include "PinConfig.h"
+#include "pin_config.h"
 
 Display::Display() {
   {
