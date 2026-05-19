@@ -23,7 +23,7 @@
       "label": "PlatformIO: Monitor",
       "type": "shell",
       "command": "pio",
-      "args": ["device", "monitor", "--baud", "115200"],
+      "args": ["device", "monitor", "--port", "/dev/cu.usbmodem5C4C2151231", "--baud", "115200"],
       "problemMatcher": []
     }
   ]
