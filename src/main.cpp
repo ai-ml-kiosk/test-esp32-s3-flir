@@ -1,33 +1,23 @@
 #include <Arduino.h>
 
-#include "display_driver.h"
-#include "pin_config.h"
-#include "thermal_ui.h"
-
-Display display;
-ThermalUi thermalUi;
+#if FLIR_REAL_APP
+#include "flir/flir_app.h"
+#else
+#include "demo/demo_app.h"
+#endif
 
 void setup() {
-  Serial.begin(115200);
-  delay(500);
-
-  pinMode(Pins::SD_CS, OUTPUT);
-  digitalWrite(Pins::SD_CS, HIGH);
-
-  display.init();
-  display.setRotation(1);
-  display.setBrightness(210);
-
-  thermalUi.begin(display);
+#if FLIR_REAL_APP
+  FlirApp::setup();
+#else
+  DemoApp::setup();
+#endif
 }
 
 void loop() {
-  uint16_t x = 0;
-  uint16_t y = 0;
-  if (display.getTouch(&x, &y)) {
-    thermalUi.handleTouch(x, y);
-  }
-
-  thermalUi.update(display);
-  delay(100);
+#if FLIR_REAL_APP
+  FlirApp::loop();
+#else
+  DemoApp::loop();
+#endif
 }

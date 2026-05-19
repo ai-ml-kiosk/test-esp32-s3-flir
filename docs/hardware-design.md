@@ -5,8 +5,9 @@
 The intended hardware stack is:
 
 - ESP32-S3 development board.
-- FLIR Lepton thermal module, preferably on a breakout board that provides the
-  required Lepton clocking, power rails, and accessible SPI/I2C pins.
+- FLIR Lepton 2.5 thermal module on breakout board v1.4. This breakout provides
+  the required power rails plus SPI/VoSPI and I2C/CCI pins, but does not expose
+  separate FLIR `PWR_EN` or `RST` pins.
 - 2.8 inch 240x320 SPI TFT display, assumed ILI9341-compatible.
 - XPT2046 resistive touch controller, usually sharing the display SPI bus.
 - microSD socket, usually sharing SPI with its own chip-select.
@@ -17,8 +18,8 @@ The intended hardware stack is:
 - Do not feed 5V logic into ESP32-S3 pins.
 - Display VCC may be 5V on some modules if the module includes a regulator, but
   the SPI/touch/SD signal lines must still be 3.3V logic.
-- FLIR Lepton modules are 3.3V-class devices at the breakout interface. Confirm
-  the exact breakout board before applying power.
+- FLIR Lepton 2.5 breakout v1.4 is treated as a 3.3V-class interface in this
+  project. Confirm your board markings before applying power.
 - All modules must share a common ground.
 - Use short wiring for FLIR VoSPI and display SPI, especially SCLK and MISO.
 
@@ -57,4 +58,3 @@ Use one I2C bus:
 - If a visible camera is added later, treat thermal/visible alignment as a
   per-device calibration problem. For this first ESP32-S3 project, the scope is
   thermal-only display.
-

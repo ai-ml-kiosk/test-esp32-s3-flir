@@ -20,16 +20,16 @@ the PNG version is embedded so repository previews render consistently.
 ## Board Header Placement
 
 Viewed from the front with the USB-C connectors at the bottom, this mapping
-keeps the display/touch/SD wiring mostly on the left header and the FLIR VoSPI
-wiring on the right header.
+keeps the display/touch/SD wiring and FLIR Lepton 2.5 breakout wiring mostly on
+the left header. The right-header `GPIO35` through `GPIO39` pins are deliberately
+avoided for FLIR VoSPI on this N16R8 board.
 
 | Header area | Device signals |
 |---|---|
 | Left header `GPIO11`, `GPIO12`, `GPIO13` | Shared UI SPI MOSI, SCLK, MISO. |
 | Left header `GPIO9`, `GPIO10`, `GPIO14`, `GPIO15`, `GPIO16`, `GPIO17` | LCD, touch, and SD chip-select/control pins. |
+| Left header `GPIO4`, `GPIO5`, `GPIO6`, `GPIO7` | Dedicated FLIR VoSPI SCLK, MISO, MOSI, CS. |
 | Left header `GPIO8`, `GPIO18` | FLIR CCI/I2C SDA and SCL. |
-| Right header `GPIO35`, `GPIO36`, `GPIO37`, `GPIO39` | Dedicated FLIR VoSPI MOSI, SCLK, MISO, CS. |
-| Right header `GPIO1`, `GPIO2` | Optional FLIR power-enable and reset lines. |
 | Power rails | Use `3V3` for FLIR, module-rated `3V3` or `5V` for TFT VCC, and common `G` ground. |
 
 ## Avoided Pins
@@ -51,10 +51,10 @@ Avoid these pins unless the board schematic says they are safe:
 | UI SPI SCLK | `GPIO12` | Shared by LCD, touch, and SD. |
 | UI SPI MOSI | `GPIO11` | Shared by LCD, touch, and SD. |
 | UI SPI MISO | `GPIO13` | Required for touch and SD; optional for LCD readback. |
-| FLIR SPI SCLK | `GPIO36` | Dedicated Lepton VoSPI clock. |
-| FLIR SPI MISO | `GPIO37` | Lepton VoSPI data into ESP32-S3. |
-| FLIR SPI MOSI | `GPIO35` | Optional/unused by VoSPI, but wire if breakout expects SPI MOSI. |
-| FLIR SPI CS | `GPIO39` | Dedicated Lepton chip-select; replaces generic `GPIO34`, which is not exposed on this board layout. |
+| FLIR SPI SCLK | `GPIO4` | Dedicated Lepton VoSPI clock. |
+| FLIR SPI MISO | `GPIO5` | Lepton VoSPI data into ESP32-S3. |
+| FLIR SPI MOSI | `GPIO6` | Optional/unused by VoSPI, but wire if breakout expects SPI MOSI. |
+| FLIR SPI CS | `GPIO7` | Dedicated Lepton chip-select. |
 | FLIR I2C SDA | `GPIO8` | CCI/control bus. |
 | FLIR I2C SCL | `GPIO18` | CCI/control bus. |
 
@@ -78,30 +78,49 @@ touch, and microSD support.
 | Touch T_IRQ | `GPIO16` | Touch to ESP32-S3 | Optional touch interrupt; can poll if not wired. |
 | SD CS | `GPIO17` | ESP32-S3 to SD | microSD chip-select. |
 
-## FLIR Lepton Wiring
+## FLIR Lepton 2.5 Breakout v1.4 Wiring
 
-Assumed FLIR breakout exposes SPI/VoSPI and I2C/CCI at 3.3V logic.
+This project now assumes a FLIR Lepton 2.5 on breakout board v1.4. That
+breakout exposes SPI/VoSPI and I2C/CCI at 3.3V logic, but it does **not**
+provide separate `PWR_EN` or `RST` pins to wire to the ESP32-S3.
+
+Important naming note: many FLIR Lepton breakout boards label the video SPI
+clock as `CLK` instead of `SCK` or `SCLK`. That `CLK` pin is **not** the same as
+I2C `SCL`. Use `GPIO4` for the breakout `CLK` pin, and use `GPIO18` only for
+the I2C/CCI `SCL` pin.
 
 | FLIR breakout signal | ESP32-S3 GPIO | Direction | Notes |
 |---|---:|---|---|
 | VIN / VCC | 3.3V | Power | Confirm breakout voltage requirements. |
 | GND | GND | Power | Common ground. |
-| SPI SCK | `GPIO36` | ESP32-S3 to FLIR | Dedicated VoSPI clock. |
-| SPI MISO / VoSPI data | `GPIO37` | FLIR to ESP32-S3 | Thermal packet stream. |
-| SPI MOSI | `GPIO35` | ESP32-S3 to FLIR | Optional for many VoSPI breakouts; safe to allocate. |
-| SPI CS | `GPIO39` | ESP32-S3 to FLIR | Dedicated chip-select. |
-| CCI SDA | `GPIO8` | Bidirectional | I2C data, use pullups if breakout lacks them. |
-| CCI SCL | `GPIO18` | ESP32-S3 to FLIR | I2C clock, use pullups if breakout lacks them. |
-| RESET / RST / EN | `GPIO2` | ESP32-S3 to FLIR | Optional reset/enable line if available. |
-| PWR_EN | `GPIO1` | ESP32-S3 to FLIR | Optional power-enable line if available. |
+| CLK / SPI SCK / SCLK | `GPIO4` | ESP32-S3 to FLIR | Dedicated VoSPI video clock. This is the breakout `CLK` pin. |
+| SPI MISO / VoSPI data | `GPIO5` | FLIR to ESP32-S3 | Thermal packet stream. |
+| SPI MOSI | `GPIO6` | ESP32-S3 to FLIR | Optional for many VoSPI breakouts; safe to allocate. |
+| SPI CS | `GPIO7` | ESP32-S3 to FLIR | Dedicated chip-select. |
+| SDA / CCI SDA | `GPIO8` | Bidirectional | I2C/CCI data, use pullups if breakout lacks them. |
+| SCL / CCI SCL | `GPIO18` | ESP32-S3 to FLIR | I2C/CCI clock, use pullups if breakout lacks them. |
+| RESET / RST / EN | Not connected | - | Breakout v1.4 does not expose this pin. |
+| PWR_EN | Not connected | - | Breakout v1.4 does not expose this pin. |
+
+Quick breakout-label mapping:
+
+| If your FLIR breakout says... | Connect to ESP32-S3 |
+|---|---:|
+| `CLK` | `GPIO4` |
+| `SCL` | `GPIO18` |
+| `SDA` | `GPIO8` |
+| `MISO` / `DATA` / `VoSPI` | `GPIO5` |
+| `MOSI` | `GPIO6` |
+| `CS` | `GPIO7` |
 
 ## Alternate Pin Strategy
 
-If `GPIO35` through `GPIO39` are unavailable or the chosen N16R8 board ties
-them to internal flash/PSRAM or other board-specific functions, keep the same
-bus separation but move the FLIR bus to another free set of GPIOs. ESP32-S3 can
-route SPI signals through the GPIO matrix, but high-speed Lepton capture is more
-sensitive than the LCD UI bus. Prioritize short wiring and stable pins for:
+The earlier `GPIO35` through `GPIO39` idea is avoided because those pins can be
+associated with FSPI/sub-SPI functions on ESP32-S3 N16R8 boards and may interfere
+with flash/PSRAM or boot stability when an external module drives them. Keep the
+same bus separation if you choose another pin group. ESP32-S3 can route SPI
+signals through the GPIO matrix, but high-speed Lepton capture is more sensitive
+than the LCD UI bus. Prioritize short wiring and stable pins for:
 
 1. FLIR `SCK`
 2. FLIR `MISO`

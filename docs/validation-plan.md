@@ -9,6 +9,7 @@
 5. Add SD card and run read/write tests.
 6. Add FLIR power and I2C only; scan for CCI address.
 7. Add FLIR VoSPI and attempt packet sync.
+8. Initialize the FLIR Lepton 2.5, handling the synchronization of VoSPI packets (discarding 0x0F packets) and handling periodic FFC (Flat Field Correction) shutter clicks.
 
 ## Phase 2: FLIR Frame Capture
 

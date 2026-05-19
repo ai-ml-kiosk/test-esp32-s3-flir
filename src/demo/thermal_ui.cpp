@@ -10,6 +10,10 @@ constexpr int kThermalViewX = 0;
 constexpr int kThermalViewY = 0;
 constexpr int kSideX = 240;
 constexpr int kSideW = 80;
+constexpr int kPanelTextX = 250;
+constexpr int kPanelValueX = 312;
+constexpr int kPanelRuleX = 250;
+constexpr int kPanelRuleW = 62;
 
 constexpr uint16_t kBackground = 0x0841;
 constexpr uint16_t kSidePanel = 0x18E3;
@@ -17,6 +21,8 @@ constexpr uint16_t kDivider = 0x6B4D;
 constexpr uint16_t kMuted = 0x9CF3;
 constexpr uint16_t kButton = 0x31A6;
 constexpr uint16_t kButtonBorder = 0x8C71;
+constexpr uint16_t kButtonPressed = 0x4A89;
+constexpr uint16_t kButtonPressedBorder = 0xB7FF;
 constexpr uint16_t kGreen = 0x57EA;
 constexpr uint16_t kRed = 0xF800;
 constexpr uint16_t kAmber = 0xFD20;
@@ -47,26 +53,29 @@ void ThermalUi::handleTouch(uint16_t x, uint16_t y) {
   }
   lastTouchMs_ = now;
 
-  if (contains(thermalButton_, x, y)) {
-    thermalOverlay_ = !thermalOverlay_;
-    Serial.printf("thermal overlay %s\n", thermalOverlay_ ? "on" : "off");
-  } else if (contains(rotLeftButton_, x, y)) {
+  if (contains(rotLeftButton_, x, y)) {
+    setPressed(ButtonId::RotLeft);
     rotationDeg_ = (rotationDeg_ + 270) % 360;
     Serial.printf("rotation %d\n", rotationDeg_);
   } else if (contains(rotRightButton_, x, y)) {
+    setPressed(ButtonId::RotRight);
     rotationDeg_ = (rotationDeg_ + 90) % 360;
     Serial.printf("rotation %d\n", rotationDeg_);
   } else if (contains(zoomOutButton_, x, y)) {
+    setPressed(ButtonId::ZoomOut);
     zoom_ = max(1.0f, zoom_ - 0.5f);
     Serial.printf("zoom %.1f\n", zoom_);
   } else if (contains(zoomInButton_, x, y)) {
+    setPressed(ButtonId::ZoomIn);
     zoom_ = min(4.0f, zoom_ + 0.5f);
     Serial.printf("zoom %.1f\n", zoom_);
   } else if (contains(captureButton_, x, y)) {
+    setPressed(ButtonId::Capture);
     captureFlash_ = true;
     captureFlashUntilMs_ = now + 700;
     Serial.println("capture requested; SD capture will be wired after storage support");
   } else if (contains(exitButton_, x, y)) {
+    setPressed(ButtonId::Exit);
     Serial.println("exit pressed; staying on FLIR preview screen");
   }
 }
@@ -136,7 +145,7 @@ void ThermalUi::drawThermalOverlayText(Display& display) {
   display.setTextDatum(textdatum_t::top_left);
   display.setTextColor(TFT_WHITE, TFT_TRANSPARENT);
   display.setTextSize(2);
-  display.drawString("FLIR 80x60", 8, 9);
+  // display.drawString("FLIR 80x60", 8, 9);
 
   const int hotScreenX = kThermalViewX + frame_.highX * 3 + 1;
   const int hotScreenY = kThermalViewY + frame_.highY * 4 + 2;
@@ -155,54 +164,72 @@ void ThermalUi::drawSidePanel(Display& display) {
   display.drawFastVLine(kSideX, 0, kScreenH, kDivider);
 
   display.setTextDatum(textdatum_t::top_left);
-  display.setTextSize(2);
-  display.setTextColor(TFT_WHITE, kSidePanel);
-  display.drawString("THERMAL", 248, 7);
-  display.setTextColor(kGreen, kSidePanel);
-  display.drawString("LIVE", 248, 31);
-  drawStatusRow(display, 55, "FPS", String(fps_, 1));
-  display.drawFastHLine(248, 68, 64, kDivider);
-
-  drawButton(display, thermalButton_, thermalOverlay_);
-
   display.setTextSize(1);
-  display.setTextColor(kMuted, kSidePanel);
-  display.drawString("VIEW", 248, 106);
-  drawStatusRow(display, 117, "Rot", String(rotationDeg_));
-  drawButton(display, rotLeftButton_);
-  drawButton(display, rotRightButton_);
+  display.setFont(&fonts::Font2);
+  display.setTextColor(TFT_WHITE, kSidePanel);
+  display.drawString("THERMAL", kPanelTextX, 7);
+  display.setFont(&fonts::Font0);
+  display.setTextSize(2);
+  display.setTextColor(kGreen, kSidePanel);
+  display.drawString("LIVE", kPanelTextX, 31);
+  drawStatusRow(display, 55, "FPS", String(fps_, 1));
+  display.drawFastHLine(kPanelRuleX, 72, kPanelRuleW, kDivider);
 
-  drawStatusRow(display, 161, "Zoom", String(zoom_, 1) + "x");
-  drawButton(display, zoomOutButton_);
-  drawButton(display, zoomInButton_);
+  drawSectionLabel(display, 92, "VIEW");
+  drawStatusRow(display, 101, "Rot", String(rotationDeg_));
+  drawButton(display, rotLeftButton_, false, isPressed(ButtonId::RotLeft));
+  drawButton(display, rotRightButton_, false, isPressed(ButtonId::RotRight));
 
-  drawButton(display, captureButton_, captureFlash_);
-  drawButton(display, exitButton_);
+  drawStatusRow(display, 145, "Zoom", String(zoom_, 1) + "x");
+  drawButton(display, zoomOutButton_, false, isPressed(ButtonId::ZoomOut));
+  drawButton(display, zoomInButton_, false, isPressed(ButtonId::ZoomIn));
+
+  drawButton(display, captureButton_, captureFlash_, isPressed(ButtonId::Capture));
+  drawButton(display, exitButton_, false, isPressed(ButtonId::Exit));
 }
 
-void ThermalUi::drawButton(Display& display, const Button& button, bool active) const {
-  const uint16_t fill = active ? 0x4A89 : kButton;
-  const uint16_t border = active ? kGreen : kButtonBorder;
+void ThermalUi::drawButton(Display& display, const Button& button, bool active, bool pressed) const {
+  const uint16_t fill = pressed ? kButtonPressed : (active ? 0x4A89 : kButton);
+  const uint16_t border = pressed ? kButtonPressedBorder : (active ? kGreen : kButtonBorder);
   display.fillRect(button.x, button.y, button.w, button.h, fill);
   display.drawRect(button.x, button.y, button.w, button.h, border);
+  if (pressed) {
+    display.drawRect(button.x + 1, button.y + 1, button.w - 2, button.h - 2, kButtonPressedBorder);
+  }
   display.setTextDatum(textdatum_t::middle_center);
   display.setTextSize(button.h < 24 ? 1 : 2);
   display.setTextColor(TFT_WHITE, fill);
   display.drawString(button.label, button.x + button.w / 2, button.y + button.h / 2);
 }
 
+void ThermalUi::drawSectionLabel(Display& display, int16_t y, const char* label) const {
+  display.setTextDatum(textdatum_t::top_left);
+  display.setTextSize(1);
+  display.setTextColor(kMuted, kSidePanel);
+  display.drawString(label, kPanelTextX, y);
+}
+
 void ThermalUi::drawStatusRow(Display& display, int16_t y, const char* label, const String& value) const {
   display.setTextDatum(textdatum_t::top_left);
   display.setTextSize(1);
   display.setTextColor(kMuted, kSidePanel);
-  display.drawString(label, 248, y);
+  display.drawString(label, kPanelTextX, y);
   display.setTextColor(TFT_WHITE, kSidePanel);
-  display.drawRightString(value, 312, y);
+  display.drawRightString(value, kPanelValueX, y);
 }
 
 void ThermalUi::drawMarker(Display& display, int px, int py, uint16_t color) const {
   display.drawCircle(px, py, 8, color);
   display.drawCircle(px, py, 9, color);
+}
+
+void ThermalUi::setPressed(ButtonId buttonId) {
+  pressedButton_ = buttonId;
+  pressedUntilMs_ = millis() + 220;
+}
+
+bool ThermalUi::isPressed(ButtonId buttonId) const {
+  return pressedButton_ == buttonId && millis() <= pressedUntilMs_;
 }
 
 bool ThermalUi::contains(const Button& button, uint16_t x, uint16_t y) const {

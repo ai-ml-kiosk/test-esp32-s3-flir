@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1100" viewBox="0 0 1100 1500" role="img" aria-labelledby="title desc">
   <title id="title">ESP32-S3 N16R8 device pin layout</title>
-  <desc id="desc">Front-view device mapping for a dual USB-C ESP32-S3-WROOM N16R8 board. Display, touch, and microSD signals are placed mostly on the left header. FLIR Lepton VoSPI signals are placed on the right header.</desc>
+  <desc id="desc">Front-view device mapping for a dual USB-C ESP32-S3-WROOM N16R8 board. Display, touch, microSD, and the FLIR Lepton 2.5 breakout v1.4 signals are placed mostly on the left header. GPIO35 through GPIO39 are avoided for FLIR VoSPI.</desc>
   <defs>
     <style>
       .bg { fill: #f8fafc; }
@@ -45,7 +45,7 @@
   <rect class="sd" x="628" y="146" width="24" height="18" rx="4"/>
   <text class="small" x="662" y="161">microSD</text>
   <rect class="flir" x="760" y="146" width="24" height="18" rx="4"/>
-  <text class="small" x="794" y="161">FLIR VoSPI</text>
+  <text class="small" x="794" y="161">FLIR Lepton 2.5 breakout v1.4</text>
   <rect class="i2c" x="900" y="146" width="24" height="18" rx="4"/>
   <text class="small" x="934" y="161">FLIR CCI/I2C</text>
   <rect class="power" x="84" y="176" width="24" height="18" rx="4"/>
@@ -70,10 +70,10 @@
   <rect class="power" x="235" y="270" width="92" height="38" rx="8"/><text class="pinText" x="250" y="296">3V3</text>
   <rect class="power" x="235" y="318" width="92" height="38" rx="8"/><text class="pinText" x="250" y="344">3V3</text>
   <rect class="avoid" x="235" y="366" width="92" height="38" rx="8"/><text class="pinText" x="254" y="392">RST</text>
-  <rect class="avoid" x="235" y="414" width="92" height="38" rx="8"/><text class="pinText" x="260" y="440">IO4</text>
-  <rect class="avoid" x="235" y="462" width="92" height="38" rx="8"/><text class="pinText" x="260" y="488">IO5</text>
-  <rect class="avoid" x="235" y="510" width="92" height="38" rx="8"/><text class="pinText" x="260" y="536">IO6</text>
-  <rect class="avoid" x="235" y="558" width="92" height="38" rx="8"/><text class="pinText" x="260" y="584">IO7</text>
+  <rect class="flir" x="235" y="414" width="92" height="38" rx="8"/><text class="pinText" x="260" y="440">IO4</text>
+  <rect class="flir" x="235" y="462" width="92" height="38" rx="8"/><text class="pinText" x="260" y="488">IO5</text>
+  <rect class="flir" x="235" y="510" width="92" height="38" rx="8"/><text class="pinText" x="260" y="536">IO6</text>
+  <rect class="flir" x="235" y="558" width="92" height="38" rx="8"/><text class="pinText" x="260" y="584">IO7</text>
   <rect class="touch" x="235" y="606" width="92" height="38" rx="8"/><text class="pinText" x="252" y="632">IO15</text>
   <rect class="touch" x="235" y="654" width="92" height="38" rx="8"/><text class="pinText" x="252" y="680">IO16</text>
   <rect class="sd" x="235" y="702" width="92" height="38" rx="8"/><text class="pinText" x="252" y="728">IO17</text>
@@ -94,16 +94,16 @@
   <rect class="power" x="773" y="270" width="92" height="38" rx="8"/><text class="pinText" x="805" y="296">G</text>
   <rect class="avoid" x="773" y="318" width="92" height="38" rx="8"/><text class="pinText" x="790" y="344">IO43</text>
   <rect class="avoid" x="773" y="366" width="92" height="38" rx="8"/><text class="pinText" x="790" y="392">IO44</text>
-  <rect class="flir" x="773" y="414" width="92" height="38" rx="8"/><text class="pinText" x="798" y="440">IO1</text>
-  <rect class="flir" x="773" y="462" width="92" height="38" rx="8"/><text class="pinText" x="798" y="488">IO2</text>
+  <rect class="avoid" x="773" y="414" width="92" height="38" rx="8"/><text class="pinText" x="798" y="440">IO1</text>
+  <rect class="avoid" x="773" y="462" width="92" height="38" rx="8"/><text class="pinText" x="798" y="488">IO2</text>
   <rect class="avoid" x="773" y="510" width="92" height="38" rx="8"/><text class="pinText" x="790" y="536">IO42</text>
   <rect class="avoid" x="773" y="558" width="92" height="38" rx="8"/><text class="pinText" x="790" y="584">IO41</text>
   <rect class="avoid" x="773" y="606" width="92" height="38" rx="8"/><text class="pinText" x="790" y="632">IO40</text>
-  <rect class="flir" x="773" y="654" width="92" height="38" rx="8"/><text class="pinText" x="790" y="680">IO39</text>
+  <rect class="avoid" x="773" y="654" width="92" height="38" rx="8"/><text class="pinText" x="790" y="680">IO39</text>
   <rect class="avoid" x="773" y="702" width="92" height="38" rx="8"/><text class="pinText" x="790" y="728">IO38</text>
-  <rect class="flir" x="773" y="750" width="92" height="38" rx="8"/><text class="pinText" x="790" y="776">IO37</text>
-  <rect class="flir" x="773" y="798" width="92" height="38" rx="8"/><text class="pinText" x="790" y="824">IO36</text>
-  <rect class="flir" x="773" y="846" width="92" height="38" rx="8"/><text class="pinText" x="790" y="872">IO35</text>
+  <rect class="avoid" x="773" y="750" width="92" height="38" rx="8"/><text class="pinText" x="790" y="776">IO37</text>
+  <rect class="avoid" x="773" y="798" width="92" height="38" rx="8"/><text class="pinText" x="790" y="824">IO36</text>
+  <rect class="avoid" x="773" y="846" width="92" height="38" rx="8"/><text class="pinText" x="790" y="872">IO35</text>
   <rect class="avoid" x="773" y="894" width="92" height="38" rx="8"/><text class="pinText" x="798" y="920">IO0</text>
   <rect class="avoid" x="773" y="942" width="92" height="38" rx="8"/><text class="pinText" x="790" y="968">IO45</text>
   <rect class="avoid" x="773" y="990" width="92" height="38" rx="8"/><text class="pinText" x="790" y="1016">IO48</text>
@@ -115,11 +115,15 @@
   <rect class="power" x="773" y="1278" width="92" height="38" rx="8"/><text class="pinText" x="805" y="1304">G</text>
 
   <!-- Signal tags -->
+  <text class="label" x="88" y="396">FLIR CLK / SCK</text>
+  <text class="label" x="88" y="444">FLIR MISO</text>
+  <text class="label" x="88" y="492">FLIR MOSI optional</text>
+  <text class="label" x="88" y="540">FLIR CS</text>
   <text class="label" x="88" y="636">Touch CS</text>
   <text class="label" x="88" y="684">Touch IRQ</text>
   <text class="label" x="88" y="732">SD CS</text>
-  <text class="label" x="88" y="780">CCI SCL</text>
-  <text class="label" x="88" y="828">CCI SDA</text>
+  <text class="label" x="88" y="780">FLIR SCL / CCI</text>
+  <text class="label" x="88" y="828">FLIR SDA / CCI</text>
   <text class="label" x="88" y="972">LCD DC</text>
   <text class="label" x="88" y="1020">LCD CS</text>
   <text class="label" x="88" y="1068">UI MOSI</text>
@@ -127,15 +131,15 @@
   <text class="label" x="88" y="1164">UI MISO</text>
   <text class="label" x="88" y="1212">LCD RST</text>
 
-  <text class="label" x="892" y="444">FLIR PWR_EN optional</text>
-  <text class="label" x="892" y="492">FLIR RST optional</text>
-  <text class="label" x="892" y="684">FLIR CS</text>
-  <text class="label" x="892" y="780">FLIR MISO</text>
-  <text class="label" x="892" y="828">FLIR SCK</text>
-  <text class="label" x="892" y="876">FLIR MOSI optional</text>
+  <text class="label" x="892" y="444">GPIO1 unused</text>
+  <text class="label" x="892" y="492">GPIO2 unused</text>
+  <text class="label" x="892" y="684">GPIO39 avoid for FLIR</text>
+  <text class="label" x="892" y="780">GPIO37 avoid for FLIR</text>
+  <text class="label" x="892" y="828">GPIO36 avoid for FLIR</text>
+  <text class="label" x="892" y="876">GPIO35 avoid for FLIR</text>
   <text class="label" x="892" y="1116">Backlight PWM</text>
 
   <rect class="callout" x="54" y="1384" width="992" height="78"/>
-  <text class="note" x="84" y="1418">Power: FLIR breakout signal pins must be 3.3V logic. TFT VCC may be 3.3V or 5V only if the module explicitly supports it.</text>
+  <text class="note" x="84" y="1418">Power: Lepton 2.5 breakout v1.4 uses 3.3V logic; no FLIR PWR_EN/RST pins are connected.</text>
   <text class="note" x="84" y="1448">Ground: connect one common GND between ESP32-S3, TFT/touch/SD module, and FLIR breakout.</text>
 </svg>

@@ -62,21 +62,24 @@
   <text class="small" x="475" y="482">Keep VoSPI isolated from display/SD</text>
 
   <rect class="flir-fill" x="475" y="505" width="86" height="28" rx="6"/>
-  <text class="pin" x="489" y="524">GPIO36</text>
-  <text class="note" x="570" y="524">VoSPI SCK</text>
+  <text class="pin" x="489" y="524">GPIO4</text>
+  <text class="note" x="570" y="524">VoSPI CLK/SCK</text>
   <rect class="flir-fill" x="475" y="542" width="86" height="28" rx="6"/>
-  <text class="pin" x="489" y="561">GPIO37</text>
+  <text class="pin" x="489" y="561">GPIO5</text>
   <text class="note" x="570" y="561">VoSPI MISO</text>
+  <rect class="flir-fill" x="628" y="542" width="86" height="28" rx="6"/>
+  <text class="pin" x="642" y="561">GPIO6</text>
+  <text class="note" x="628" y="575">VoSPI MOSI</text>
   <rect class="flir-fill" x="475" y="579" width="86" height="28" rx="6"/>
-  <text class="pin" x="489" y="598">GPIO39</text>
-  <text class="note" x="570" y="598">VoSPI CS on GPIO39</text>
+  <text class="pin" x="489" y="598">GPIO7</text>
+  <text class="note" x="570" y="598">VoSPI CS</text>
 
   <rect class="i2c-fill" x="628" y="505" width="86" height="28" rx="6"/>
   <text class="pin" x="646" y="524">GPIO8</text>
-  <text class="note" x="628" y="553">CCI SDA</text>
+  <text class="note" x="628" y="553">SDA / CCI</text>
   <rect class="i2c-fill" x="628" y="579" width="86" height="28" rx="6"/>
   <text class="pin" x="642" y="598">GPIO18</text>
-  <text class="note" x="628" y="627">CCI SCL</text>
+  <text class="note" x="628" y="627">SCL / CCI</text>
 
   <rect class="module" x="56" y="170" width="300" height="238"/>
   <text class="heading" x="93" y="208">2.8 inch SPI TFT Module</text>
@@ -92,16 +95,16 @@
   <text class="note" x="92" y="468">SD CS GPIO17</text>
 
   <rect class="module" x="844" y="196" width="300" height="286"/>
-  <text class="heading" x="903" y="234">FLIR Lepton Breakout</text>
-  <text class="small" x="908" y="258">Thermal VoSPI + CCI control</text>
+  <text class="heading" x="884" y="234">FLIR Lepton 2.5 Breakout</text>
+  <text class="small" x="908" y="258">Breakout v1.4: VoSPI + CCI only</text>
   <text class="label" x="880" y="304">VoSPI frame capture</text>
-  <text class="note" x="880" y="330">SPI SCK GPIO36</text>
-  <text class="note" x="880" y="356">SPI MISO GPIO37</text>
-  <text class="note" x="880" y="382">SPI MOSI GPIO35 optional</text>
-  <text class="note" x="880" y="408">SPI CS GPIO39</text>
+  <text class="note" x="880" y="330">CLK / SPI SCK GPIO4</text>
+  <text class="note" x="880" y="356">SPI MISO GPIO5</text>
+  <text class="note" x="880" y="382">SPI MOSI GPIO6 optional</text>
+  <text class="note" x="880" y="408">SPI CS GPIO7</text>
   <text class="label" x="880" y="448">CCI / I2C control</text>
   <text class="note" x="880" y="474">SDA GPIO8, SCL GPIO18</text>
-  <text class="note" x="880" y="500">RST GPIO2 and PWR_EN GPIO1 optional</text>
+  <text class="note" x="880" y="500">No RST/PWR_EN pins on breakout v1.4</text>
 
   <rect class="callout" x="844" y="536" width="300" height="112"/>
   <text class="label" x="872" y="570">Power rule</text>
@@ -116,7 +119,7 @@
   <path class="wire flir" d="M 748 519 C 806 519 806 330 844 330"/>
   <path class="wire-bi flir" d="M 748 556 C 805 556 805 356 844 356"/>
   <path class="wire flir" d="M 748 593 C 812 593 812 408 844 408"/>
-  <path class="wire flir" d="M 748 539 C 792 539 792 382 844 382"/>
+  <path class="wire flir" d="M 714 556 C 792 556 792 382 844 382"/>
 
   <path class="wire-bi i2c" d="M 714 519 C 782 519 782 474 844 474"/>
   <path class="wire i2c" d="M 714 593 C 785 593 785 497 844 497"/>

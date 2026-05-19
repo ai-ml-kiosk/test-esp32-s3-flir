@@ -22,14 +22,18 @@ static constexpr int TOUCH_IRQ = 16;
 // Optional microSD chip-select on the same UI SPI bus.
 static constexpr int SD_CS = 17;
 
-// Reserved for the future FLIR Lepton module.
-static constexpr int FLIR_SPI_SCLK = 36;
-static constexpr int FLIR_SPI_MOSI = 35;
-static constexpr int FLIR_SPI_MISO = 37;
-static constexpr int FLIR_SPI_CS = 39;
+// FLIR Lepton 2.5 on breakout v1.4.
+// Breakout label mapping:
+//   CLK/SCK/SCLK -> FLIR_SPI_SCLK
+//   SDA          -> FLIR_CCI_SDA
+//   SCL          -> FLIR_CCI_SCL
+static constexpr int FLIR_SPI_SCLK = 4;
+static constexpr int FLIR_SPI_MOSI = 6;
+static constexpr int FLIR_SPI_MISO = 5;
+static constexpr int FLIR_SPI_CS = 7;
 static constexpr int FLIR_CCI_SDA = 8;
 static constexpr int FLIR_CCI_SCL = 18;
-static constexpr int FLIR_RESET = 2;
-static constexpr int FLIR_POWER_ENABLE = 1;
+static constexpr int FLIR_RESET = -1;        // Breakout v1.4 does not expose reset.
+static constexpr int FLIR_POWER_ENABLE = -1; // Breakout v1.4 does not expose power enable.
 
 }  // namespace Pins
