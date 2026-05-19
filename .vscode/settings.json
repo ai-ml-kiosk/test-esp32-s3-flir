@@ -1,4 +1,10 @@
 {
   "C_Cpp.default.configurationProvider": "platformio.platformio-ide",
-  "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json"
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/compile_commands.json",
+  "code-runner.executorMap": {
+    "cpp": "cd $workspaceRoot && pio run",
+    "c": "cd $workspaceRoot && pio run"
+  },
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true
 }
