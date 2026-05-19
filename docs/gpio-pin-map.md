@@ -53,7 +53,7 @@ Avoid these pins unless the board schematic says they are safe:
 | UI SPI MISO | `GPIO13` | Required for touch and SD; optional for LCD readback. |
 | FLIR SPI SCLK | `GPIO4` | Dedicated Lepton VoSPI clock. |
 | FLIR SPI MISO | `GPIO5` | Lepton VoSPI data into ESP32-S3. |
-| FLIR SPI MOSI | `GPIO6` | Optional/unused by VoSPI, but wire if breakout expects SPI MOSI. |
+| FLIR SPI MOSI | `GPIO6` | Dedicated Lepton SPI MOSI connection. |
 | FLIR SPI CS | `GPIO7` | Dedicated Lepton chip-select. |
 | FLIR I2C SDA | `GPIO8` | CCI/control bus. |
 | FLIR I2C SCL | `GPIO18` | CCI/control bus. |
@@ -95,7 +95,7 @@ the I2C/CCI `SCL` pin.
 | GND | GND | Power | Common ground. |
 | CLK / SPI SCK / SCLK | `GPIO4` | ESP32-S3 to FLIR | Dedicated VoSPI video clock. This is the breakout `CLK` pin. |
 | SPI MISO / VoSPI data | `GPIO5` | FLIR to ESP32-S3 | Thermal packet stream. |
-| SPI MOSI | `GPIO6` | ESP32-S3 to FLIR | Optional for many VoSPI breakouts; safe to allocate. |
+| SPI MOSI | `GPIO6` | ESP32-S3 to FLIR | Dedicated Lepton SPI MOSI connection. |
 | SPI CS | `GPIO7` | ESP32-S3 to FLIR | Dedicated chip-select. |
 | SDA / CCI SDA | `GPIO8` | Bidirectional | I2C/CCI data, use pullups if breakout lacks them. |
 | SCL / CCI SCL | `GPIO18` | ESP32-S3 to FLIR | I2C/CCI clock, use pullups if breakout lacks them. |

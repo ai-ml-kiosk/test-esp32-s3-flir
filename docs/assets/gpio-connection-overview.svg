@@ -100,7 +100,7 @@
   <text class="label" x="880" y="304">VoSPI frame capture</text>
   <text class="note" x="880" y="330">CLK / SPI SCK GPIO4</text>
   <text class="note" x="880" y="356">SPI MISO GPIO5</text>
-  <text class="note" x="880" y="382">SPI MOSI GPIO6 optional</text>
+  <text class="note" x="880" y="382">SPI MOSI GPIO6</text>
   <text class="note" x="880" y="408">SPI CS GPIO7</text>
   <text class="label" x="880" y="448">CCI / I2C control</text>
   <text class="note" x="880" y="474">SDA GPIO8, SCL GPIO18</text>

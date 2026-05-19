@@ -115,10 +115,10 @@
   <rect class="power" x="773" y="1278" width="92" height="38" rx="8"/><text class="pinText" x="805" y="1304">G</text>
 
   <!-- Signal tags -->
-  <text class="label" x="88" y="396">FLIR CLK / SCK</text>
-  <text class="label" x="88" y="444">FLIR MISO</text>
-  <text class="label" x="88" y="492">FLIR MOSI optional</text>
-  <text class="label" x="88" y="540">FLIR CS</text>
+  <text class="label" x="88" y="444">FLIR CLK / SCK</text>
+  <text class="label" x="88" y="492">FLIR MISO</text>
+  <text class="label" x="88" y="540">FLIR MOSI</text>
+  <text class="label" x="88" y="588">FLIR CS</text>
   <text class="label" x="88" y="636">Touch CS</text>
   <text class="label" x="88" y="684">Touch IRQ</text>
   <text class="label" x="88" y="732">SD CS</text>

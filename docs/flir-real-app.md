@@ -43,6 +43,10 @@ Wire that `CLK` pin to `GPIO4`. Do not confuse it with `SCL`: `SCL` is the
 I2C/CCI control clock and should go to `GPIO18`. `SDA` is the I2C/CCI data line
 and should go to `GPIO8`.
 
+For this build, wire FLIR `MOSI` to `GPIO6` as a required Lepton SPI signal.
+The firmware initializes the dedicated FLIR SPI bus with SCLK, MISO, MOSI, and
+CS so the breakout wiring matches the configured bus exactly.
+
 Avoid wiring Lepton VoSPI to `GPIO35`, `GPIO36`, `GPIO37`, or `GPIO39` on this
 ESP32-S3 N16R8 board. Those pins can be associated with flash/PSRAM-related
 FSPI/sub-SPI functions and may cause boot watchdog resets when externally

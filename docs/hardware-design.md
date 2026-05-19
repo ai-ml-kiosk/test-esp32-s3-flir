@@ -21,7 +21,8 @@ The intended hardware stack is:
 - FLIR Lepton 2.5 breakout v1.4 is treated as a 3.3V-class interface in this
   project. Confirm your board markings before applying power.
 - All modules must share a common ground.
-- Use short wiring for FLIR VoSPI and display SPI, especially SCLK and MISO.
+- Use short wiring for FLIR VoSPI and display SPI, especially SCLK, MISO, MOSI,
+  CS, and ground.
 
 ## Bus Allocation
 
@@ -31,6 +32,10 @@ Use two SPI buses:
 |---|---|---|---|
 | UI SPI | Display/touch/storage | ILI9341, XPT2046, microSD | These devices can share SCLK/MOSI/MISO with separate chip-select lines. |
 | FLIR SPI | Thermal frame capture | FLIR Lepton VoSPI | Keeps Lepton packet timing isolated from LCD and SD transactions. |
+
+The FLIR SPI bus is wired as `GPIO4` SCLK, `GPIO5` MISO, `GPIO6` MOSI, and
+`GPIO7` CS. In this project `GPIO6` / FLIR MOSI is a required connection, not
+an optional placeholder.
 
 Use one I2C bus:
 
